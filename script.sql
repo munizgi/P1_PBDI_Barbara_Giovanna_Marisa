@@ -1,4 +1,43 @@
 
+
+
+
+
+
+
+
+
+--  Enunciado 3 - Sobrevivência em função do gênero
+DO $$
+DECLARE
+    genero CHAR(6):= 'female';
+    cur_sobrevivente CURSOR(gen CHAR(6)) FOR SELECT id_passageiro FROM titanic WHERE generop = 'female';
+    qtdcontador INT :=0;
+    valor INT := -1;
+    c INT := 0;
+BEGIN
+    OPEN cur_sobrevivente(gen := genero);
+        LOOP
+            FETCH cur_sobrevivente INTO qtdcontador;
+            c := c + 1;
+        EXIT WHEN NOT FOUND;
+        END LOOP;
+    RAISE NOTICE 'Existem % sobreviventes do gênero feminino', c;
+    CLOSE cur_sobrevivente;
+END;
+$$
+
+
+SELECT generop FROM titanic
+
+
+
+
+
+
+
+
+
 -- Enunciado 2 - Sobrevivência em função da classe social
 DO $$
 DECLARE
