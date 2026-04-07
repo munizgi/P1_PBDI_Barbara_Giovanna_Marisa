@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 --  Enunciado 3 - Sobrevivência em função do gênero
 DO $$
 DECLARE
@@ -22,20 +13,13 @@ BEGIN
             c := c + 1;
         EXIT WHEN NOT FOUND;
         END LOOP;
+        IF c IS NULL THEN
+        RAISE NOTICE '%', valor;
+        END IF;
     RAISE NOTICE 'Existem % sobreviventes do gênero feminino', c;
     CLOSE cur_sobrevivente;
 END;
 $$
-
-
-SELECT generop FROM titanic
-
-
-
-
-
-
-
 
 
 -- Enunciado 2 - Sobrevivência em função da classe social
@@ -56,10 +40,6 @@ BEGIN
     CLOSE cur_sobrevivente;
 END;
 $$
-
-
-
-
 
 
 -- Enunciado 1 - Base de dados e criação de tabela
